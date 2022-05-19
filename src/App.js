@@ -1,5 +1,8 @@
+import Game from "./components/Game/Game";
+import "normalize.css";
+
 function App() {
-    return <div className="App"></div>;
+    return <Game></Game>;
 }
 
 export default App;
