@@ -37,6 +37,17 @@ export default class Game extends Component {
         this.setState((_) => ({ scoreToWin: scoreEntered }));
     };
 
+    onResetGame = () =>
+        this.setState({
+            totalScores: [0, 0],
+            activePlayer: 0,
+            currScore: 0,
+            scoreToWin: 100,
+            isEndGame: false,
+            winningPlayer: null,
+            hasRollDice: false,
+        });
+
     hasScoreToWin = () => this.state.totalScores.indexOf(this.state.scoreToWin);
 
     hasMoreThanScoreToWin = () =>
@@ -82,6 +93,7 @@ export default class Game extends Component {
                     range={[1, 6]}
                     onRollDice={this.onRollDice}
                     onEndTurn={this.onEndTurn}
+                    onResetGame={this.onResetGame}
                     onInputChange={this.onInputChange}
                     scoreToWin={this.state.scoreToWin}
                     isGameEnded={this.state.isEndGame}

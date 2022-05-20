@@ -1,1 +1,20 @@
-/* No CSS *//*# sourceMappingURL=Dice.css.map */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.dice-img-container {
+  border: 1px solid black;
+}
+
+.dice-img-container img {
+  width: 10rem;
+  height: 10rem;
+}
+/*# sourceMappingURL=Dice.css.map */

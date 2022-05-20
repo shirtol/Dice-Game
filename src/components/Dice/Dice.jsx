@@ -1,7 +1,15 @@
 import React, { Component } from "react";
+import "./Dice.css";
 
 export default class Dice extends Component {
     render() {
-        return <div>{this.props.diceVal}</div>;
+        return (
+            <div className="dice-img-container">
+                <img
+                    alt=""
+                    src={require(`../../assets/dice-${this.props.diceVal}.png`)}
+                />
+            </div>
+        );
     }
 }

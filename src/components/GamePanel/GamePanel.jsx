@@ -6,7 +6,7 @@ import LabeledInput from "../LabeledInput/LabeledInput";
 import "./GamePanel.css";
 
 export default class GamePanel extends Component {
-    state = { currDice: [0, 0] };
+    state = { currDice: [1, 1] };
 
     changeCurrVal = () => {
         this.setState(
@@ -19,7 +19,10 @@ export default class GamePanel extends Component {
         );
     };
 
-    refreshGame = () => {};
+    refreshGame = () => {
+        this.setState({ currDice: [1, 1] });
+        this.props.onResetGame();
+    };
 
     sumOfDice = () => this.state.currDice.reduce((acc, curr) => acc + curr);
 
