@@ -1,0 +1,14 @@
+.pop-up-container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    * {
+        width: 50%;
+        height: 70%;
+        background: #897290;
+        opacity: 0.9;
+    }
+}

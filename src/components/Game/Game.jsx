@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GamePanel from "../GamePanel/GamePanel";
 import Player from "../Player/Player";
+import PopUp from "../PopUp/PopUp";
 import "./Game.css";
 
 export default class Game extends Component {
@@ -113,6 +114,7 @@ export default class Game extends Component {
     render() {
         return (
             <>
+                <PopUp></PopUp>
                 <div className="bg-container"></div>
                 <div className="game-container">
                     <Player
