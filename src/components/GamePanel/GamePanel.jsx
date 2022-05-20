@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from "../Button/Button";
 import Dice from "../Dice/Dice";
 import { roll } from "../Game/GameLogic";
+import LabeledInput from "../LabeledInput/LabeledInput";
 
 export default class GamePanel extends Component {
     state = { currDice: [0, 0] };
@@ -53,7 +54,10 @@ export default class GamePanel extends Component {
                         buttonText="END TURN"
                         iconClass="fa-solid fa-check fa-2x"
                     ></Button>
-                    <input type="text" placeholder="FINAL SCORE"></input>
+                    <LabeledInput
+                        scoreToWin={this.props.scoreToWin}
+                        onInputChange={this.props.onInputChange}
+                    ></LabeledInput>
                 </div>
             </div>
         );
