@@ -1,0 +1,22 @@
+$media_queries: (
+    "small-screen": "(max-width: 1100px)",
+    "tablet": "(max-width: 850px)",
+    "mini-tablet": "(max-width: 650px)",
+    "mobile": "(max-width:448px)",
+    "big-height-screen": "(max-height: 1150px)",
+);
+
+@mixin responsive($breakpoints) {
+    $conditions: ();
+    @each $breakpoint in $breakpoints {
+        $conditions: append(
+            $conditions,
+            #{inspect(map-get($media_queries, $breakpoint))},
+            comma
+        );
+    }
+
+    @media #{$conditions} {
+        @content;
+    }
+}

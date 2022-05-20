@@ -1,9 +1,20 @@
+@import "../../Utils/mixin.scss";
+
 .game-panel {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 95%;
+    @include responsive(tablet) {
+        justify-content: space-around;
+    }
+    @include responsive(mini-tablet) {
+        // flex-direction: row;
+        // justify-content: space-around;
+        gap: 5rem;
+        width: 90%;
+    }
 }
 
 .game-options {
@@ -18,4 +29,7 @@
     gap: 1rem;
     display: flex;
     flex-direction: column;
+    @include responsive(mini-tablet) {
+        flex-direction: row;
+    }
 }
