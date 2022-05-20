@@ -2,6 +2,10 @@
   border: 1px solid black;
   width: 10rem;
   height: 10rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .dice-img-container img {

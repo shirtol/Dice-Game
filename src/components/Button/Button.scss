@@ -14,12 +14,14 @@ html {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
+    cursor: pointer;
     color: #fff;
     background: #cfa48b;
     padding: 1rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
         rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
     &:active {
         transition: box-shadow 100ms ease-in-out;
         transform: scale(0.95);
