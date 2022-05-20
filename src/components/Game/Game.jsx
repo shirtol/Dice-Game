@@ -11,11 +11,13 @@ export default class Game extends Component {
         scoreToWin: 100,
         isEndGame: false,
         winningPlayer: null,
+        hasRollDice: false,
     };
 
     onRollDice = (sumOfDice) => {
         this.setState((prevState) => ({
             currScore: prevState.currScore + sumOfDice,
+            hasRollDice: true,
         }));
     };
 
@@ -27,6 +29,7 @@ export default class Game extends Component {
             currScore: 0,
             activePlayer:
                 (prevState.activePlayer + 1) % prevState.totalScores.length,
+            hasRollDice: false,
         }));
     };
 
@@ -37,9 +40,10 @@ export default class Game extends Component {
     hasScoreToWin = () => this.state.totalScores.indexOf(this.state.scoreToWin);
 
     hasMoreThanScoreToWin = () =>
-        this.state.totalScores.findIndex(
-            (num) => num + this.state.currScore > this.state.scoreToWin
-        );
+        this.state.totalScores[this.state.activePlayer] + this.state.currScore >
+        this.state.scoreToWin
+            ? this.state.activePlayer
+            : -1;
 
     componentDidUpdate = () => {
         const idxOfWinner = this.hasScoreToWin();
@@ -80,6 +84,8 @@ export default class Game extends Component {
                     onEndTurn={this.onEndTurn}
                     onInputChange={this.onInputChange}
                     scoreToWin={this.state.scoreToWin}
+                    isGameEnded={this.state.isEndGame}
+                    hasRollDice={this.state.hasRollDice}
                 ></GamePanel>
                 <Player
                     name="player 2"
