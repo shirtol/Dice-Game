@@ -8,6 +8,7 @@ export default class Game extends Component {
         totalScores: [0, 0],
         activePlayer: 0,
         currScore: 0,
+        scoreToWin: 100,
     };
 
     onRollDice = (sumOfDice) => {
@@ -27,6 +28,10 @@ export default class Game extends Component {
         }));
     };
 
+    onInputChange = (scoreEntered) => {
+        this.setState((_) => ({ scoreToWin: scoreEntered }));
+    };
+
     render() {
         return (
             <div className="game-container">
@@ -41,6 +46,8 @@ export default class Game extends Component {
                     range={[1, 6]}
                     onRollDice={this.onRollDice}
                     onEndTurn={this.onEndTurn}
+                    onInputChange={this.onInputChange}
+                    scoreToWin={this.state.scoreToWin}
                 ></GamePanel>
                 <Player
                     name="player 2"
