@@ -2,6 +2,6 @@ import React, { Component } from "react";
 
 export default class Dice extends Component {
     render() {
-        return <div>5</div>;
+        return <div>{this.props.diceVal}</div>;
     }
 }
