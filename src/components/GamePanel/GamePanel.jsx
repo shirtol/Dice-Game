@@ -19,7 +19,10 @@ export default class GamePanel extends Component {
         );
     };
 
-    refreshGame = () => {};
+    refreshGame = () => {
+        this.setState({ currDice: [1, 1] });
+        this.props.onResetGame();
+    };
 
     sumOfDice = () => this.state.currDice.reduce((acc, curr) => acc + curr);
 
