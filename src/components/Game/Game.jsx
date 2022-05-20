@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import EndGamePopUp from "../EndGamePopUp/EndGamePopUp";
 import GamePanel from "../GamePanel/GamePanel";
 import Player from "../Player/Player";
 import "./Game.css";
@@ -113,6 +114,11 @@ export default class Game extends Component {
     render() {
         return (
             <>
+                <EndGamePopUp
+                    isShown={this.state.isEndGame}
+                    handleReset={this.onResetGame}
+                    winner={this.state.winningPlayer}
+                ></EndGamePopUp>
                 <div className="bg-container"></div>
                 <div className="game-container">
                     <Player
