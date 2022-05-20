@@ -3,6 +3,7 @@ import Button from "../Button/Button";
 import Dice from "../Dice/Dice";
 import { roll } from "../Game/GameLogic";
 import LabeledInput from "../LabeledInput/LabeledInput";
+import "./GamePanel.css";
 
 export default class GamePanel extends Component {
     state = { currDice: [0, 0] };
