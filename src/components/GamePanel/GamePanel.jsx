@@ -7,14 +7,19 @@ export default class GamePanel extends Component {
     state = { currDice: [0, 0] };
 
     changeCurrVal = () => {
-        this.setState((prevState) => {
-            prevState.currDice[0] = roll(this.props.range);
-            prevState.currDice[1] = roll(this.props.range);
-            return { currDice: prevState.currDice };
-        });
+        this.setState(
+            (prevState) => {
+                prevState.currDice[0] = roll(this.props.range);
+                prevState.currDice[1] = roll(this.props.range);
+                return { currDice: prevState.currDice };
+            },
+            () => this.props.onRollDice(this.sumOfDice())
+        );
     };
 
     refreshGame = () => {};
+
+    sumOfDice = () => this.state.currDice.reduce((acc, curr) => acc + curr);
 
     rollDice = () => {
         console.log(this.state.currDice);
@@ -22,8 +27,6 @@ export default class GamePanel extends Component {
     };
 
     endTurn = () => {};
-
-    sumOfDice = () => this.state.currDice.reduce((acc, curr) => acc + curr);
 
     render() {
         return (
