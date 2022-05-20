@@ -9,11 +9,15 @@ export default class Game extends Component {
         activePlayer: 0,
         currScore: 0,
         scoreToWin: 100,
+        isEndGame: false,
+        winningPlayer: null,
+        hasRollDice: false,
     };
 
     onRollDice = (sumOfDice) => {
         this.setState((prevState) => ({
             currScore: prevState.currScore + sumOfDice,
+            hasRollDice: true,
         }));
     };
 
@@ -25,11 +29,43 @@ export default class Game extends Component {
             currScore: 0,
             activePlayer:
                 (prevState.activePlayer + 1) % prevState.totalScores.length,
+            hasRollDice: false,
         }));
     };
 
     onInputChange = (scoreEntered) => {
         this.setState((_) => ({ scoreToWin: scoreEntered }));
+    };
+
+    hasScoreToWin = () => this.state.totalScores.indexOf(this.state.scoreToWin);
+
+    hasMoreThanScoreToWin = () =>
+        this.state.totalScores[this.state.activePlayer] + this.state.currScore >
+        this.state.scoreToWin
+            ? this.state.activePlayer
+            : -1;
+
+    componentDidUpdate = () => {
+        const idxOfWinner = this.hasScoreToWin();
+        const idxOfLoser = this.hasMoreThanScoreToWin();
+        if (!this.state.isEndGame && idxOfWinner !== -1) {
+            this.setState(
+                (_) => ({
+                    isEndGame: true,
+                    winningPlayer: idxOfWinner,
+                }),
+                console.log(this.state.winningPlayer, this.state.isEndGame)
+            );
+        } else if (!this.state.isEndGame && idxOfLoser !== -1) {
+            this.setState(
+                (_) => ({
+                    isEndGame: true,
+                    winningPlayer: 1 - idxOfLoser,
+                }),
+                console.log(this.state.winningPlayer, this.state.isEndGame)
+            );
+        }
+        console.log(this.state.winningPlayer, this.state.isEndGame);
     };
 
     render() {
@@ -48,6 +84,8 @@ export default class Game extends Component {
                     onEndTurn={this.onEndTurn}
                     onInputChange={this.onInputChange}
                     scoreToWin={this.state.scoreToWin}
+                    isGameEnded={this.state.isEndGame}
+                    hasRollDice={this.state.hasRollDice}
                 ></GamePanel>
                 <Player
                     name="player 2"

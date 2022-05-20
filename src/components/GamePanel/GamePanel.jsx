@@ -48,11 +48,15 @@ export default class GamePanel extends Component {
                         handleClick={this.rollDice}
                         buttonText="ROLL DICE"
                         iconClass="fa-solid fa-dice fa-2x"
+                        disabled={this.props.isGameEnded}
                     ></Button>
                     <Button
                         handleClick={this.endTurn}
                         buttonText="END TURN"
                         iconClass="fa-solid fa-check fa-2x"
+                        disabled={
+                            this.props.isGameEnded || !this.props.hasRollDice
+                        }
                     ></Button>
                     <LabeledInput
                         scoreToWin={this.props.scoreToWin}

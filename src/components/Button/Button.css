@@ -21,4 +21,9 @@ html {
           align-items: center;
   gap: 1.5rem;
 }
+
+div[disabled] {
+  pointer-events: none;
+  opacity: 0.7;
+}
 /*# sourceMappingURL=Button.css.map */
