@@ -9,6 +9,8 @@ export default class Game extends Component {
         activePlayer: 0,
         currScore: 0,
         scoreToWin: 100,
+        isEndGame: false,
+        winningPlayer: null,
     };
 
     onRollDice = (sumOfDice) => {
@@ -30,6 +32,34 @@ export default class Game extends Component {
 
     onInputChange = (scoreEntered) => {
         this.setState((_) => ({ scoreToWin: scoreEntered }));
+    };
+
+    hasScoreToWin = () => this.state.totalScores.indexOf(this.state.scoreToWin);
+
+    hasMoreThanScoreToWin = () =>
+        this.state.totalScores.findIndex((num) => num > this.state.scoreToWin);
+
+    componentDidUpdate = () => {
+        const idxOfWinner = this.hasScoreToWin();
+        const idxOfLoser = this.hasMoreThanScoreToWin();
+        if (!this.state.isEndGame && idxOfWinner !== -1) {
+            this.setState(
+                (_) => ({
+                    isEndGame: true,
+                    winningPlayer: idxOfWinner,
+                }),
+                console.log(this.state.winningPlayer, this.state.isEndGame)
+            );
+        } else if (!this.state.isEndGame && idxOfLoser !== -1) {
+            this.setState(
+                (_) => ({
+                    isEndGame: true,
+                    winningPlayer: 1 - idxOfLoser,
+                }),
+                console.log(this.state.winningPlayer, this.state.isEndGame)
+            );
+        }
+        console.log(this.state.winningPlayer, this.state.isEndGame);
     };
 
     render() {
