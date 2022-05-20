@@ -24,6 +24,7 @@ html {
       -ms-flex-align: center;
           align-items: center;
   gap: 1.5rem;
+  cursor: pointer;
   color: #fff;
   background: #cfa48b;
   padding: 1rem;

@@ -12,13 +12,36 @@ export default class Game extends Component {
         isEndGame: false,
         winningPlayer: null,
         hasRollDice: false,
+        numOfDice: 2,
     };
 
-    onRollDice = (sumOfDice) => {
+    gotDoubleSix = (sumOfDice) => sumOfDice === this.state.numOfDice * 6;
+
+    updatePlayerScore = (sumOfDice) => {
         this.setState((prevState) => ({
             currScore: prevState.currScore + sumOfDice,
             hasRollDice: true,
         }));
+    };
+
+    resetPlayerScore = () => {
+        const newScoresArr = [...this.state.totalScores];
+        newScoresArr[this.state.activePlayer] = 0;
+        this.setState(
+            (_) => ({
+                currScore: 0,
+                totalScore: newScoresArr,
+            }),
+            this.onEndTurn
+        );
+    };
+
+    onRollDice = (sumOfDice) => {
+        if (!this.gotDoubleSix(sumOfDice)) {
+            this.updatePlayerScore(sumOfDice);
+        } else {
+            this.resetPlayerScore();
+        }
     };
 
     onEndTurn = () => {
@@ -38,15 +61,18 @@ export default class Game extends Component {
     };
 
     onResetGame = () =>
-        this.setState({
-            totalScores: [0, 0],
-            activePlayer: 0,
-            currScore: 0,
-            scoreToWin: 100,
-            isEndGame: false,
-            winningPlayer: null,
-            hasRollDice: false,
-        });
+        this.setState(
+            {
+                totalScores: [0, 0],
+                activePlayer: 0,
+                currScore: 0,
+                scoreToWin: 100,
+                isEndGame: false,
+                winningPlayer: null,
+                hasRollDice: false,
+            },
+            console.log(this.state.isEndGame)
+        );
 
     hasScoreToWin = () => this.state.totalScores.indexOf(this.state.scoreToWin);
 
@@ -56,27 +82,32 @@ export default class Game extends Component {
             ? this.state.activePlayer
             : -1;
 
+    foundWinner = (idxOfWinner) => !this.state.isEndGame && idxOfWinner !== -1;
+
+    updateStateAfterWin = (idxOfWinner) => {
+        this.setState((_) => ({
+            isEndGame: true,
+            winningPlayer: idxOfWinner,
+        }));
+    };
+
+    foundLoser = (idxOfLoser) => !this.state.isEndGame && idxOfLoser !== -1;
+
+    updateStateAfterLoss = (idxOfLoser) => {
+        this.setState((_) => ({
+            isEndGame: true,
+            winningPlayer: 1 - idxOfLoser,
+        }));
+    };
+
     componentDidUpdate = () => {
         const idxOfWinner = this.hasScoreToWin();
         const idxOfLoser = this.hasMoreThanScoreToWin();
-        if (!this.state.isEndGame && idxOfWinner !== -1) {
-            this.setState(
-                (_) => ({
-                    isEndGame: true,
-                    winningPlayer: idxOfWinner,
-                }),
-                console.log(this.state.winningPlayer, this.state.isEndGame)
-            );
-        } else if (!this.state.isEndGame && idxOfLoser !== -1) {
-            this.setState(
-                (_) => ({
-                    isEndGame: true,
-                    winningPlayer: 1 - idxOfLoser,
-                }),
-                console.log(this.state.winningPlayer, this.state.isEndGame)
-            );
+        if (this.foundWinner(idxOfWinner)) {
+            this.updateStateAfterWin(idxOfWinner);
+        } else if (this.foundLoser(idxOfLoser)) {
+            this.updateStateAfterLoss(idxOfLoser);
         }
-        console.log(this.state.winningPlayer, this.state.isEndGame);
     };
 
     render() {
