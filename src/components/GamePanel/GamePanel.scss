@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 80%;
+    height: 95%;
 }
 
 .game-options {
@@ -12,4 +12,10 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+}
+
+.dice-container {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
 }

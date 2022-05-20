@@ -81,32 +81,39 @@ export default class Game extends Component {
 
     render() {
         return (
-            <div className="game-container">
-                <Player
-                    name="player 1"
-                    totalScore={this.state.totalScores[0]}
-                    currScore={
-                        this.state.activePlayer === 0 ? this.state.currScore : 0
-                    }
-                ></Player>
-                <GamePanel
-                    range={[1, 6]}
-                    onRollDice={this.onRollDice}
-                    onEndTurn={this.onEndTurn}
-                    onResetGame={this.onResetGame}
-                    onInputChange={this.onInputChange}
-                    scoreToWin={this.state.scoreToWin}
-                    isGameEnded={this.state.isEndGame}
-                    hasRollDice={this.state.hasRollDice}
-                ></GamePanel>
-                <Player
-                    name="player 2"
-                    totalScore={this.state.totalScores[1]}
-                    currScore={
-                        this.state.activePlayer === 1 ? this.state.currScore : 0
-                    }
-                ></Player>
-            </div>
+            <>
+                <div className="bg-container"></div>
+                <div className="game-container">
+                    <Player
+                        name="player 1"
+                        totalScore={this.state.totalScores[0]}
+                        currScore={
+                            this.state.activePlayer === 0
+                                ? this.state.currScore
+                                : 0
+                        }
+                    ></Player>
+                    <GamePanel
+                        range={[1, 6]}
+                        onRollDice={this.onRollDice}
+                        onEndTurn={this.onEndTurn}
+                        onResetGame={this.onResetGame}
+                        onInputChange={this.onInputChange}
+                        scoreToWin={this.state.scoreToWin}
+                        isGameEnded={this.state.isEndGame}
+                        hasRollDice={this.state.hasRollDice}
+                    ></GamePanel>
+                    <Player
+                        name="player 2"
+                        totalScore={this.state.totalScores[1]}
+                        currScore={
+                            this.state.activePlayer === 1
+                                ? this.state.currScore
+                                : 0
+                        }
+                    ></Player>
+                </div>
+            </>
         );
     }
 }
