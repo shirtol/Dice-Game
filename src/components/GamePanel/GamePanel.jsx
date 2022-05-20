@@ -26,7 +26,9 @@ export default class GamePanel extends Component {
         this.changeCurrVal();
     };
 
-    endTurn = () => {};
+    endTurn = () => {
+        this.props.onEndTurn();
+    };
 
     render() {
         return (
