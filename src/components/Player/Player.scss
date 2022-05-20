@@ -1,3 +1,5 @@
+@import "../../Utils/mixin.scss";
+
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +16,11 @@ html {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     // box-shadow: #92546970 0px 25px 50px -12px;
     border-radius: 10px;
+    @include responsive(mini-tablet) {
+        margin: 2rem 0;
+        width: 95%;
+        height: max-content;
+    }
 }
 
 .player {
@@ -25,6 +32,32 @@ html {
     color: #fff;
     padding: 2rem;
     user-select: none;
+
+    @include responsive(small-screen) {
+        padding: 5px;
+        width: 20rem;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    @include responsive(mini-tablet) {
+        flex-direction: row;
+        width: 100%;
+        height: 8rem;
+        text-align: center;
+        align-content: center;
+
+        .total-score {
+            // display: inline-block;
+            // width: 10rem;
+            margin-left: 20px;
+            clear: both;
+            align-content: center;
+            // vertical-align: middle;
+        }
+    }
+    @include responsive(mobile) {
+        font-size: 0.7rem;
+    }
 }
 
 .bg-player-container {
@@ -34,6 +67,10 @@ html {
     height: 100%;
     width: 100%;
     border-radius: 10px;
+    @include responsive(mini-tablet) {
+        width: 100%;
+        height: 8rem;
+    }
 }
 
 .curr-score-container {
@@ -41,4 +78,15 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include responsive(mini-tablet) {
+        // flex-direction: row;
+        width: 15rem;
+        font-size: 1rem;
+        .curr-score-title {
+            margin: 0;
+        }
+    }
+    @include responsive(mobile) {
+        font-size: 0.7rem;
+    }
 }

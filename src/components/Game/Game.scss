@@ -1,3 +1,5 @@
+@import "../../Utils/mixin.scss";
+
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +12,12 @@ html {
     letter-spacing: 0.7rem;
 }
 
+// body {
+//     @include responsive(big-height-screen) {
+//         background-size: 100% 100%;
+//     }
+// }
+
 .bg-container {
     background: url("../../assets/bg/bg.jpg");
     background-repeat: no-repeat;
@@ -20,6 +28,7 @@ html {
     z-index: -1;
     position: absolute;
     opacity: 0.7;
+    min-height: 100%;
 }
 
 .game-container {
@@ -28,4 +37,7 @@ html {
     align-items: center;
     height: 100vh;
     font-size: 1.6rem;
+    @include responsive(mini-tablet) {
+        flex-direction: column;
+    }
 }

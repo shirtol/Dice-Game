@@ -15,6 +15,20 @@
   height: 95%;
 }
 
+@media (max-width: 850px) {
+  .game-panel {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+@media (max-width: 650px) {
+  .game-panel {
+    gap: 5rem;
+    width: 90%;
+  }
+}
+
 .game-options {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,5 +55,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media (max-width: 650px) {
+  .dice-container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
 }
 /*# sourceMappingURL=GamePanel.css.map */

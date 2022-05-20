@@ -27,6 +27,12 @@
   outline: none;
 }
 
+@media (max-width: 850px) {
+  .input-container input {
+    width: 15rem;
+  }
+}
+
 .input-container label {
   position: absolute;
   pointer-events: none;
@@ -46,6 +52,16 @@
   height: -moz-min-content;
   height: min-content;
   text-align: center;
+}
+
+@media (max-width: 850px) {
+  .input-container label {
+    -webkit-transform-origin: center top;
+            transform-origin: center top;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+  }
 }
 
 .input-container .filled {

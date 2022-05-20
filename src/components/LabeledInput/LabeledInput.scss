@@ -1,3 +1,5 @@
+@import "../../Utils/mixin.scss";
+
 .input-container {
     position: relative;
     display: flex;
@@ -19,6 +21,9 @@
             rgba(0, 0, 0, 0.22) 0px 15px 12px;
         border: none;
         outline: none;
+        @include responsive(tablet) {
+            width: 15rem;
+        }
     }
 
     label {
@@ -35,6 +40,10 @@
         width: 20rem;
         height: min-content;
         text-align: center;
+        @include responsive(tablet) {
+            transform-origin: center top;
+            width: max-content;
+        }
     }
 
     .filled {

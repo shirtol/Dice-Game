@@ -1,3 +1,5 @@
+@import "../../Utils/mixin.scss";
+
 * {
     margin: 0;
     padding: 0;
@@ -28,6 +30,11 @@ html {
         transition: transform 100ms ease-in-out;
         box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 27px,
             rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    }
+
+    @include responsive(tablet) {
+        padding: 0.5rem;
+        font-size: 1.3rem;
     }
 }
 
