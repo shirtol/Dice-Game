@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACD,SAAS,EAAE,KAAK;CACnB;;AAED,AAAA,YAAY,CAAC;EACT,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "EndGamePopUp.scss"
+    ],
+    "names": [],
+    "file": "EndGamePopUp.css"
+}
