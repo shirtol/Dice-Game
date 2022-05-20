@@ -37,7 +37,9 @@ export default class Game extends Component {
     hasScoreToWin = () => this.state.totalScores.indexOf(this.state.scoreToWin);
 
     hasMoreThanScoreToWin = () =>
-        this.state.totalScores.findIndex((num) => num > this.state.scoreToWin);
+        this.state.totalScores.findIndex(
+            (num) => num + this.state.currScore > this.state.scoreToWin
+        );
 
     componentDidUpdate = () => {
         const idxOfWinner = this.hasScoreToWin();
