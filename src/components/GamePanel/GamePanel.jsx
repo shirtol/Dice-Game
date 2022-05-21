@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from "../Button/Button";
 import Dice from "../Dice/Dice";
-import { roll } from "../Game/GameLogic";
+import { getRandomNumInRange } from "../Game/GameLogic";
 import "./GamePanel.css";
 
 export default class GamePanel extends Component {
@@ -10,8 +10,8 @@ export default class GamePanel extends Component {
     changeCurrVal = () => {
         this.setState(
             (prevState) => {
-                prevState.currDice[0] = roll(this.props.range);
-                prevState.currDice[1] = roll(this.props.range);
+                prevState.currDice[0] = getRandomNumInRange(this.props.range);
+                prevState.currDice[1] = getRandomNumInRange(this.props.range);
                 return { currDice: prevState.currDice };
             },
             () => this.props.onRollDice(this.sumOfDice())
@@ -55,7 +55,9 @@ export default class GamePanel extends Component {
                         handleClick={this.rollDice}
                         buttonText="ROLL DICE"
                         iconClass="fa-solid fa-dice fa-2x"
-                        disabled={this.props.isGameEnded}
+                        disabled={
+                            this.props.isGameEnded || this.props.disableButtons
+                        }
                     ></Button>
                     <Button
                         handleClick={this.endTurn}
@@ -65,11 +67,6 @@ export default class GamePanel extends Component {
                             this.props.isGameEnded || !this.props.hasRollDice
                         }
                     ></Button>
-                    {/* <LabeledInput
-                        value={this.props.scoreToWin}
-                        onInputChange={this.props.onInputChange}
-                        inputLabel="SCORE TO WIN"
-                    ></LabeledInput> */}
                 </div>
             </div>
         );
