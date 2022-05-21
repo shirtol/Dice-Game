@@ -1,0 +1,87 @@
+html {
+  font-size: 62.5%;
+}
+
+.new-game-title {
+  font-size: 4rem;
+}
+
+@media (max-width: 650px) {
+  .new-game-title {
+    font-size: 3rem;
+  }
+}
+
+.pick-name-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .pick-name-title {
+    font-size: 1.5rem;
+  }
+}
+
+.name-input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 6rem;
+}
+
+@media (max-width: 850px) {
+  .name-input-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 3rem;
+  }
+  .name-input-container .input-container input {
+    width: 20rem;
+  }
+  .name-input-container .input-container label {
+    left: 2rem;
+  }
+}
+
+.score-to-win-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.score-to-win-container .score-to-win-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .score-to-win-container .score-to-win-title {
+    font-size: 1.5rem;
+  }
+}
+
+.start-game-popup-container > * {
+  width: 60%;
+}
+
+@media (max-width: 450px) {
+  .start-game-popup-container > * {
+    width: 80%;
+    height: 70%;
+  }
+}
+/*# sourceMappingURL=StartGamePopUp.css.map */

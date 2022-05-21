@@ -2,3 +2,7 @@
     font-family: "MaldiniBold";
     src: local("MaldiniBold"), url("./fonts/MaldiniBold.ttf") format("truetype");
 }
+
+html {
+    color: #fff;
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import EndGamePopUp from "../EndGamePopUp/EndGamePopUp";
 import GamePanel from "../GamePanel/GamePanel";
 import Player from "../Player/Player";
+import StartGamePopUp from "../StartGamePopUp/StartGamePopUp";
 import "./Game.css";
 
 export default class Game extends Component {
@@ -14,6 +15,9 @@ export default class Game extends Component {
         winningPlayer: null,
         hasRollDice: false,
         numOfDice: 2,
+        isStartGame: true,
+        playerOneName: "",
+        playerTwoName: "",
     };
 
     gotDoubleSix = (sumOfDice) => sumOfDice === this.state.numOfDice * 6;
@@ -58,22 +62,23 @@ export default class Game extends Component {
     };
 
     onInputChange = (scoreEntered) => {
-        this.setState((_) => ({ scoreToWin: scoreEntered }));
+        this.setState(
+            (_) => ({ scoreToWin: parseInt(scoreEntered) }),
+            () => console.log(this.state.scoreToWin)
+        );
     };
 
     onResetGame = () =>
-        this.setState(
-            {
-                totalScores: [0, 0],
-                activePlayer: 0,
-                currScore: 0,
-                scoreToWin: 100,
-                isEndGame: false,
-                winningPlayer: null,
-                hasRollDice: false,
-            },
-            console.log(this.state.isEndGame)
-        );
+        this.setState({
+            totalScores: [0, 0],
+            activePlayer: 0,
+            currScore: 0,
+            isEndGame: false,
+            winningPlayer: null,
+            hasRollDice: false,
+            numOfDice: 2,
+            isStartGame: true,
+        });
 
     hasScoreToWin = () => this.state.totalScores.indexOf(this.state.scoreToWin);
 
@@ -102,7 +107,9 @@ export default class Game extends Component {
     };
 
     componentDidUpdate = () => {
+        console.log(typeof this.state.scoreToWin);
         const idxOfWinner = this.hasScoreToWin();
+        console.log(idxOfWinner);
         const idxOfLoser = this.hasMoreThanScoreToWin();
         if (this.foundWinner(idxOfWinner)) {
             this.updateStateAfterWin(idxOfWinner);
@@ -111,9 +118,43 @@ export default class Game extends Component {
         }
     };
 
+    onPlayer1NameEntered = (nameEntered) =>
+        this.setState(
+            (_) => ({ playerOneName: nameEntered }),
+            () => console.log(this.state.playerOneName)
+        );
+
+    onPlayer2NameEntered = (nameEntered) =>
+        this.setState(
+            (_) => ({ playerTwoName: nameEntered }),
+            () => console.log(this.state.playerTwoName)
+        );
+
+    startGame = () => {
+        this.setState((_) => ({ isStartGame: false }));
+    };
+
+    disableStartGame = () =>
+        this.state.playerOneName.length === 0 ||
+        this.state.playerTwoName.length === 0 ||
+        isNaN(this.state.scoreToWin);
+
     render() {
         return (
             <>
+                <StartGamePopUp
+                    isShown={this.state.isStartGame}
+                    startGameMsg="WELCOME"
+                    pickNameMsg="Enter Your Nicknames"
+                    playerOneName={this.state.playerOneName}
+                    playerTwoName={this.state.playerTwoName}
+                    whenPlayer1EnteredName={this.onPlayer1NameEntered}
+                    whenPlayer2EnteredName={this.onPlayer2NameEntered}
+                    onInputChange={this.onInputChange}
+                    scoreToWin={this.state.scoreToWin}
+                    startGame={this.startGame}
+                    disableStartGame={this.disableStartGame()}
+                ></StartGamePopUp>
                 <EndGamePopUp
                     isShown={this.state.isEndGame}
                     handleReset={this.onResetGame}
@@ -122,7 +163,7 @@ export default class Game extends Component {
                 <div className="bg-container"></div>
                 <div className="game-container">
                     <Player
-                        name="player 1"
+                        name={this.state.playerOneName}
                         totalScore={this.state.totalScores[0]}
                         currScore={
                             this.state.activePlayer === 0
@@ -135,13 +176,14 @@ export default class Game extends Component {
                         onRollDice={this.onRollDice}
                         onEndTurn={this.onEndTurn}
                         onResetGame={this.onResetGame}
-                        onInputChange={this.onInputChange}
-                        scoreToWin={this.state.scoreToWin}
+                        // onInputChange={this.onInputChange}
+                        // scoreToWin={this.state.scoreToWin}
                         isGameEnded={this.state.isEndGame}
                         hasRollDice={this.state.hasRollDice}
+                        scoreToWinTitle={this.state.scoreToWin}
                     ></GamePanel>
                     <Player
-                        name="player 2"
+                        name={this.state.playerTwoName}
                         totalScore={this.state.totalScores[1]}
                         currScore={
                             this.state.activePlayer === 1
