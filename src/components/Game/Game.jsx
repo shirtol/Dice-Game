@@ -39,12 +39,9 @@ export default class Game extends Component {
     };
 
     resetPlayerScore = () => {
-        const newScoresArr = [...this.state.totalScores];
-        newScoresArr[this.state.activePlayer] = 0;
         this.setState(
             (_) => ({
                 currScore: 0,
-                totalScore: newScoresArr,
             }),
             this.onEndTurn
         );
