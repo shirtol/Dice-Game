@@ -188,7 +188,7 @@ export default class Game extends Component {
                         }
                     ></Player>
                     <GamePanel
-                        range={[6, 6]}
+                        range={[1, 6]}
                         onRollDice={this.onRollDice}
                         onEndTurn={this.onEndTurn}
                         onResetGame={this.onResetGame}
