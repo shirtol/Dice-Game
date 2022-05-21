@@ -76,6 +76,7 @@ html {
 
 .start-game-popup-container > * {
   width: 60%;
+  position: relative;
 }
 
 @media (max-width: 450px) {

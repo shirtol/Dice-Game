@@ -60,6 +60,8 @@ html {
 .start-game-popup-container {
     & > * {
         width: 60%;
+        position: relative;
+
         @include responsive(mobile) {
             width: 80%;
             height: 70%;
