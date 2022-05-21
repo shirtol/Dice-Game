@@ -5,7 +5,7 @@ export default class PopUp extends Component {
     render() {
         return (
             this.props.isShown && (
-                <div className="pop-up-container">
+                <div className={`pop-up-container ${this.props.popupClass}`}>
                     <div>{this.props.children}</div>
                 </div>
             )

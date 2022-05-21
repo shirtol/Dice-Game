@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import Button from "../Button/Button";
 import LabeledInput from "../LabeledInput/LabeledInput";
 import PopUp from "../PopUp/PopUp";
+import "./StartGamePopUp.css";
 
 export default class StartGamePopUp extends Component {
     render() {
         return (
-            <PopUp isShown={this.props.isShown}>
+            <PopUp
+                isShown={this.props.isShown}
+                popupClass="start-game-popup-container"
+            >
                 <h2 className="new-game-title">{this.props.startGameMsg}</h2>
                 <h3 className="pick-name-title">{this.props.pickNameMsg}</h3>
                 <div className="name-input-container">

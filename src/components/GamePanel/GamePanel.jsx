@@ -43,7 +43,9 @@ export default class GamePanel extends Component {
                     iconClass="fa-solid fa-rotate fa-2x"
                 ></Button>
                 <h2 className="score-to-win-title">
-                    {`Score To Win: ${this.props.scoreToWinTitle}`}
+                    <span>Score To Win:</span>
+                    <br></br>
+                    <span>{this.props.scoreToWinTitle}</span>
                 </h2>
                 <div className="dice-container">
                     <Dice diceVal={this.state.currDice[0]}></Dice>

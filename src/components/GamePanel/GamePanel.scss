@@ -6,6 +6,10 @@
     align-items: center;
     justify-content: space-between;
     height: 95%;
+    .score-to-win-title {
+        text-align: center;
+        font-size: 2rem;
+    }
     @include responsive(tablet) {
         justify-content: space-around;
     }

@@ -15,6 +15,11 @@
   height: 95%;
 }
 
+.game-panel .score-to-win-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
 @media (max-width: 850px) {
   .game-panel {
     -ms-flex-pack: distribute;

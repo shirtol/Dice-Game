@@ -1,0 +1,68 @@
+@import "../../Utils/mixin.scss";
+
+html {
+    font-size: 62.5%;
+}
+
+.new-game-title {
+    font-size: 4rem;
+    @include responsive(mini-tablet) {
+        font-size: 3rem;
+    }
+}
+
+.pick-name-title {
+    font-size: 2rem;
+    text-align: center;
+    @include responsive(mini-tablet) {
+        font-size: 1.5rem;
+    }
+    // @include responsive(mobile) {
+    //     font-size: 1.2rem;
+    // }
+}
+
+.name-input-container {
+    display: flex;
+    gap: 6rem;
+
+    @include responsive(tablet) {
+        flex-direction: column;
+        gap: 3rem;
+        .input-container {
+            input {
+                width: 20rem;
+            }
+            label {
+                left: 2rem;
+            }
+        }
+    }
+}
+
+.score-to-win-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    .score-to-win-title {
+        font-size: 2rem;
+        text-align: center;
+
+        @include responsive(mini-tablet) {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.start-game-popup-container {
+    & > * {
+        width: 60%;
+        @include responsive(mobile) {
+            width: 80%;
+            height: 70%;
+        }
+    }
+}
