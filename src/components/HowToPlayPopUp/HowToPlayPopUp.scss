@@ -1,0 +1,43 @@
+@import "../../Utils/mixin.scss";
+
+html {
+    font-size: 62.5%;
+}
+
+.instructions-popup-container {
+    & > * {
+        position: relative;
+        justify-content: center;
+        gap: 3rem;
+        height: 30rem;
+        width: 60%;
+        padding: 1rem;
+
+        .fa-xmark {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        .how-to-play-title {
+            font-size: 4rem;
+            text-align: center;
+            @include responsive(mobile) {
+                font-size: 3rem;
+            }
+        }
+        .instructions {
+            font-size: 2rem;
+            text-align: center;
+            @include responsive(mobile) {
+                font-size: 1.5rem;
+            }
+        }
+        @include responsive(mini-tablet) {
+            width: 70%;
+            height: 40%;
+        }
+        @include responsive(galaxy-fold) {
+            height: 60%;
+        }
+    }
+}

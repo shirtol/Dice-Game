@@ -22,7 +22,6 @@ const StartGamePopUp = ({
 
     return (
         <PopUp isShown={isShown} popupClass="start-game-popup-container">
-            <i className="fa-solid fa-question fa-2x"></i>
             <h2 className="new-game-title">{startGameMsg}</h2>
             <h3 className="pick-name-title">{pickNameMsg}</h3>
             <div className="name-input-container">

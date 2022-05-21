@@ -79,12 +79,6 @@ html {
   position: relative;
 }
 
-.start-game-popup-container > * .fa-question {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
 @media (max-width: 450px) {
   .start-game-popup-container > * {
     width: 80%;

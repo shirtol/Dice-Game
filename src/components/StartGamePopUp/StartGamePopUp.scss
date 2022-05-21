@@ -61,11 +61,7 @@ html {
     & > * {
         width: 60%;
         position: relative;
-        .fa-question {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-        }
+
         @include responsive(mobile) {
             width: 80%;
             height: 70%;

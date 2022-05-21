@@ -1,0 +1,56 @@
+html {
+  font-size: 62.5%;
+}
+
+.instructions-popup-container > * {
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 3rem;
+  height: 30rem;
+  width: 60%;
+  padding: 1rem;
+}
+
+.instructions-popup-container > * .fa-xmark {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.instructions-popup-container > * .how-to-play-title {
+  font-size: 4rem;
+  text-align: center;
+}
+
+@media (max-width: 450px) {
+  .instructions-popup-container > * .how-to-play-title {
+    font-size: 3rem;
+  }
+}
+
+.instructions-popup-container > * .instructions {
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 450px) {
+  .instructions-popup-container > * .instructions {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .instructions-popup-container > * {
+    width: 70%;
+    height: 40%;
+  }
+}
+
+@media (max-width: 300px) {
+  .instructions-popup-container > * {
+    height: 60%;
+  }
+}
+/*# sourceMappingURL=HowToPlayPopUp.css.map */

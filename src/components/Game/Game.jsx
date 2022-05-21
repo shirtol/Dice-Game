@@ -6,6 +6,7 @@ import Player from "../Player/Player";
 import StartGamePopUp from "../StartGamePopUp/StartGamePopUp";
 import { getRandomNumInRange } from "../Game/GameLogic";
 import "./Game.css";
+import HowToPlayPopUp from "../HowToPlayPopUp/HowToPlayPopUp";
 
 export default class Game extends Component {
     state = {
@@ -21,6 +22,7 @@ export default class Game extends Component {
         playerOneName: "",
         playerTwoName: "",
         musicPlaying: false,
+        isInstructionsClicked: false,
     };
 
     mediaPlayer = new MediaPlayer(() =>
@@ -124,9 +126,7 @@ export default class Game extends Component {
     };
 
     componentDidUpdate = () => {
-        console.log(typeof this.state.scoreToWin);
         const idxOfWinner = this.hasScoreToWin();
-        console.log(idxOfWinner);
         const idxOfLoser = this.hasMoreThanScoreToWin();
         if (this.foundWinner(idxOfWinner)) {
             this.updateStateAfterWin(idxOfWinner);
@@ -136,25 +136,20 @@ export default class Game extends Component {
     };
 
     onPlayer1NameEntered = (nameEntered) =>
-        this.setState(
-            (_) => ({ playerOneName: nameEntered }),
-            () => console.log(this.state.playerOneName)
-        );
+        this.setState((_) => ({ playerOneName: nameEntered }));
 
     onPlayer2NameEntered = (nameEntered) =>
-        this.setState(
-            (_) => ({ playerTwoName: nameEntered }),
-            () => console.log(this.state.playerTwoName)
-        );
+        this.setState((_) => ({ playerTwoName: nameEntered }));
 
     startGame = () => {
         this.setState((_) => ({ isStartGame: false }));
     };
 
-    // disableStartGame = () =>
-    //     this.state.playerOneName.length === 0 ||
-    //     this.state.playerTwoName.length === 0 ||
-    //     isNaN(this.state.scoreToWin);
+    changeInstructionsState = () => {
+        this.setState((prevState) => ({
+            isInstructionsClicked: !prevState.isInstructionsClicked,
+        }));
+    };
 
     render() {
         return (
@@ -176,8 +171,17 @@ export default class Game extends Component {
                     handleReset={this.onResetGame}
                     winner={this.state.winningPlayer}
                 ></EndGamePopUp>
+                <HowToPlayPopUp
+                    isShown={this.state.isInstructionsClicked}
+                    onCloseWindow={this.changeInstructionsState}
+                ></HowToPlayPopUp>
                 <div className="bg-container"></div>
                 <div className="game-container">
+                    <i
+                        className="fa-solid fa-question"
+                        onClick={this.changeInstructionsState}
+                    ></i>
+
                     <Player
                         name={this.state.playerOneName}
                         totalScore={this.state.totalScores[0]}
