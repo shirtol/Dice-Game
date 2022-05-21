@@ -27,7 +27,6 @@ export default class GamePanel extends Component {
     sumOfDice = () => this.state.currDice.reduce((acc, curr) => acc + curr);
 
     rollDice = () => {
-        console.log(this.state.currDice);
         this.changeCurrVal();
     };
 
@@ -43,6 +42,9 @@ export default class GamePanel extends Component {
                     buttonText="NEW GAME"
                     iconClass="fa-solid fa-rotate fa-2x"
                 ></Button>
+                <h2 className="score-to-win-title">
+                    {`Score To Win: ${this.props.scoreToWinTitle}`}
+                </h2>
                 <div className="dice-container">
                     <Dice diceVal={this.state.currDice[0]}></Dice>
                     <Dice diceVal={this.state.currDice[1]}></Dice>
@@ -62,10 +64,11 @@ export default class GamePanel extends Component {
                             this.props.isGameEnded || !this.props.hasRollDice
                         }
                     ></Button>
-                    <LabeledInput
-                        scoreToWin={this.props.scoreToWin}
+                    {/* <LabeledInput
+                        value={this.props.scoreToWin}
                         onInputChange={this.props.onInputChange}
-                    ></LabeledInput>
+                        inputLabel="SCORE TO WIN"
+                    ></LabeledInput> */}
                 </div>
             </div>
         );

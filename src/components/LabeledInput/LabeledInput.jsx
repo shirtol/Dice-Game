@@ -1,19 +1,18 @@
 import "./LabeledInput.css";
 
-const LabeledInput = ({ scoreToWin, onInputChange }) => {
+const LabeledInput = ({ value, onInputChange, inputLabel, inputType }) => {
     const changeScoreToWin = (e) => {
         onInputChange(e.target.value);
-        console.log(e.target.value);
     };
 
     return (
         <div className="input-container">
             <input
-                type="text"
-                value={scoreToWin}
+                type={inputType}
+                value={value}
                 onChange={changeScoreToWin}
             ></input>
-            <label className={scoreToWin && "filled"}>SCORE TO WIN</label>
+            <label className={value && "filled"}>{inputLabel}</label>
         </div>
     );
 };
