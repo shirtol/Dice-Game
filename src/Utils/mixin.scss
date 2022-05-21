@@ -3,7 +3,8 @@ $media_queries: (
     "tablet": "(max-width: 850px)",
     "mini-tablet": "(max-width: 650px)",
     "mobile": "(max-width:448px)",
-    "big-height-screen": "(max-height: 1150px)",
+    "big-height-screen": "(max-height: 1080px)",
+    "big-width-screen": "(max-width: 1920px)",
 );
 
 @mixin responsive($breakpoints) {
