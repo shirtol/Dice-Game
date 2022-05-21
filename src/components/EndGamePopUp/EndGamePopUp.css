@@ -6,4 +6,16 @@ html {
   font-size: 4rem;
   color: #fff;
 }
+
+@media (max-width: 850px) {
+  .winning-msg {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 448px) {
+  .winning-msg {
+    font-size: 2rem;
+  }
+}
 /*# sourceMappingURL=EndGamePopUp.css.map */

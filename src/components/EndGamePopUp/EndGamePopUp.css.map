@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,IAAI,CAAC;EACD,SAAS,EAAE,KAAK;CACnB;;AAED,AAAA,YAAY,CAAC;EACT,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,IAAI;CACd",
+    "mappings": "AAEA,AAAA,IAAI,CAAC;EACD,SAAS,EAAE,KAAK;CACnB;;AAED,AAAA,YAAY,CAAC;EACT,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,IAAI;CAOd;;ACIG,MAAM,EAAE,SAAS,EAAE,KAAK;EDb5B,AAAA,YAAY,CAAC;IAIL,SAAS,EAAE,IAAI;GAKtB;;;ACIG,MAAM,EAAE,SAAS,EAAC,KAAK;EDb3B,AAAA,YAAY,CAAC;IAOL,SAAS,EAAE,IAAI;GAEtB",
     "sources": [
-        "EndGamePopUp.scss"
+        "EndGamePopUp.scss",
+        "../../Utils/mixin.scss"
     ],
     "names": [],
     "file": "EndGamePopUp.css"
