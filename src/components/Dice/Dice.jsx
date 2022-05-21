@@ -7,7 +7,7 @@ export default class Dice extends Component {
             <div className="dice-img-container">
                 <img
                     alt=""
-                    src={require(`../../assets/dice-${this.props.diceVal}.png`)}
+                    src={require(`../../assets/dice/dice-${this.props.diceVal}.png`)}
                 />
             </div>
         );
