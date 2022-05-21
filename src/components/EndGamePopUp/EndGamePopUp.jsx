@@ -10,9 +10,7 @@ export default class EndGamePopUp extends Component {
                 isShown={this.props.isShown}
                 popupClass="end-game-popup-container"
             >
-                <h1 className="winning-msg">
-                    {`Player ${this.props.winner + 1} Won!`}{" "}
-                </h1>
+                <h1 className="winning-msg">{`${this.props.winner} Won!`}</h1>
                 <Button
                     handleClick={this.props.handleReset}
                     buttonText="NEW GAME"
