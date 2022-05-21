@@ -110,18 +110,27 @@ export default class Game extends Component {
     foundWinner = (idxOfWinner) => !this.state.isEndGame && idxOfWinner !== -1;
 
     updateStateAfterWin = (idxOfWinner) => {
+        console.log(idxOfWinner);
+        const winnerName =
+            idxOfWinner === 0
+                ? this.state.playerOneName
+                : this.state.playerTwoName;
         this.setState((_) => ({
             isEndGame: true,
-            winningPlayer: idxOfWinner,
+            winningPlayer: winnerName,
         }));
     };
 
     foundLoser = (idxOfLoser) => !this.state.isEndGame && idxOfLoser !== -1;
 
     updateStateAfterLoss = (idxOfLoser) => {
+        const winnerName =
+            idxOfLoser === 0
+                ? this.state.playerTwoName
+                : this.state.playerOneName;
         this.setState((_) => ({
             isEndGame: true,
-            winningPlayer: 1 - idxOfLoser,
+            winningPlayer: winnerName,
         }));
     };
 
