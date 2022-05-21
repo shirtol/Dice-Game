@@ -6,7 +6,10 @@ import "./EndGamePopUp.css";
 export default class EndGamePopUp extends Component {
     render() {
         return (
-            <PopUp isShown={this.props.isShown}>
+            <PopUp
+                isShown={this.props.isShown}
+                popupClass="end-game-popup-container"
+            >
                 <h1 className="winning-msg">
                     {`Player ${this.props.winner + 1} Won!`}{" "}
                 </h1>
