@@ -17,6 +17,7 @@ html {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  cursor: pointer;
 }
 
 .instructions-popup-container > * .how-to-play-title {
