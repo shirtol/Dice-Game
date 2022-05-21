@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { MediaPlayer } from "../../Music/Sounds";
 import EndGamePopUp from "../EndGamePopUp/EndGamePopUp";
 import GamePanel from "../GamePanel/GamePanel";
 import Player from "../Player/Player";
 import StartGamePopUp from "../StartGamePopUp/StartGamePopUp";
+import { getRandomNumInRange } from "../Game/GameLogic";
 import "./Game.css";
 
 export default class Game extends Component {
@@ -18,7 +20,12 @@ export default class Game extends Component {
         isStartGame: true,
         playerOneName: "",
         playerTwoName: "",
+        musicPlaying: false,
     };
+
+    mediaPlayer = new MediaPlayer(() =>
+        this.setState((_) => ({ musicPlaying: false }))
+    );
 
     gotDoubleSix = (sumOfDice) => sumOfDice === this.state.numOfDice * 6;
 
@@ -44,7 +51,16 @@ export default class Game extends Component {
     onRollDice = (sumOfDice) => {
         if (!this.gotDoubleSix(sumOfDice)) {
             this.updatePlayerScore(sumOfDice);
+
+            this.mediaPlayer.playSound("roll");
         } else {
+            const randomNumFromFailSounds = getRandomNumInRange([1, 2]);
+            this.setState(
+                (_) => ({ musicPlaying: true }),
+                () =>
+                    this.mediaPlayer.playSound(`fail${randomNumFromFailSounds}`)
+            );
+
             this.resetPlayerScore();
         }
     };
@@ -78,6 +94,7 @@ export default class Game extends Component {
             hasRollDice: false,
             numOfDice: 2,
             isStartGame: true,
+            musicPlaying: false,
         });
 
     hasScoreToWin = () => this.state.totalScores.indexOf(this.state.scoreToWin);
@@ -171,15 +188,14 @@ export default class Game extends Component {
                         }
                     ></Player>
                     <GamePanel
-                        range={[1, 6]}
+                        range={[6, 6]}
                         onRollDice={this.onRollDice}
                         onEndTurn={this.onEndTurn}
                         onResetGame={this.onResetGame}
-                        // onInputChange={this.onInputChange}
-                        // scoreToWin={this.state.scoreToWin}
                         isGameEnded={this.state.isEndGame}
                         hasRollDice={this.state.hasRollDice}
                         scoreToWinTitle={this.state.scoreToWin}
+                        disableButtons={this.state.musicPlaying}
                     ></GamePanel>
                     <Player
                         name={this.state.playerTwoName}
