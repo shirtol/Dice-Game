@@ -62,10 +62,10 @@ export default class Game extends Component {
     };
 
     onInputChange = (scoreEntered) => {
-        this.setState(
-            (_) => ({ scoreToWin: parseInt(scoreEntered) }),
-            () => console.log(this.state.scoreToWin)
-        );
+        const limit = 4;
+        this.setState((_) => ({
+            scoreToWin: parseInt(scoreEntered.slice(0, limit)),
+        }));
     };
 
     onResetGame = () =>
@@ -134,10 +134,10 @@ export default class Game extends Component {
         this.setState((_) => ({ isStartGame: false }));
     };
 
-    disableStartGame = () =>
-        this.state.playerOneName.length === 0 ||
-        this.state.playerTwoName.length === 0 ||
-        isNaN(this.state.scoreToWin);
+    // disableStartGame = () =>
+    //     this.state.playerOneName.length === 0 ||
+    //     this.state.playerTwoName.length === 0 ||
+    //     isNaN(this.state.scoreToWin);
 
     render() {
         return (
@@ -150,10 +150,9 @@ export default class Game extends Component {
                     playerTwoName={this.state.playerTwoName}
                     whenPlayer1EnteredName={this.onPlayer1NameEntered}
                     whenPlayer2EnteredName={this.onPlayer2NameEntered}
-                    onInputChange={this.onInputChange}
+                    scoreToWinChange={this.onInputChange}
                     scoreToWin={this.state.scoreToWin}
                     startGame={this.startGame}
-                    disableStartGame={this.disableStartGame()}
                 ></StartGamePopUp>
                 <EndGamePopUp
                     isShown={this.state.isEndGame}
