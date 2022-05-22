@@ -14,7 +14,6 @@ html {
     position: relative;
     height: 70%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-    // box-shadow: #92546970 0px 25px 50px -12px;
     border-radius: 10px;
     @include responsive(mini-tablet) {
         margin: 1rem;
@@ -47,12 +46,8 @@ html {
         align-content: center;
 
         .total-score {
-            // display: inline-block;
-            // width: 10rem;
             margin-left: 20px;
-            // clear: both;
             align-content: center;
-            // vertical-align: middle;
         }
     }
     @include responsive(mobile) {
@@ -80,7 +75,6 @@ html {
     justify-content: center;
     align-items: center;
     @include responsive(mini-tablet) {
-        // flex-direction: row;
         width: 10rem;
         font-size: 6px;
         .curr-score-title {
