@@ -32,9 +32,4 @@ export const MediaPlayer = function (onEndCallback) {
             console.warn(`This sound doesn't exists`);
         }
     };
-
-    // this.toggleMute = () => {
-    //     this.mute = !this.mute;
-    //     return this.mute;
-    // };
 };

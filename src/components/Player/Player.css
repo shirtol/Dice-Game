@@ -77,7 +77,7 @@ html {
   }
 }
 
-@media (max-width: 448px) {
+@media (max-width: 450px) {
   .player {
     font-size: 0.7rem;
   }

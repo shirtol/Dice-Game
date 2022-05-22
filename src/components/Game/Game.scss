@@ -41,6 +41,5 @@ html {
     @include responsive(mini-tablet) {
         flex-direction: column;
         justify-content: center;
-        // height: 80%;
     }
 }

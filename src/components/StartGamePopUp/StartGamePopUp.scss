@@ -17,9 +17,6 @@ html {
     @include responsive(mini-tablet) {
         font-size: 1.5rem;
     }
-    // @include responsive(mobile) {
-    //     font-size: 1.2rem;
-    // }
 }
 
 .name-input-container {
